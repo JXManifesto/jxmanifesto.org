@@ -1,0 +1,1 @@
+export function ManifestoSection({ number, title, children }: { number: number; title: string; children: React.ReactNode }) { return <section className="border-t border-line py-8"><p className="text-sm font-bold text-accent">{number}</p><h2 className="mt-2 text-3xl font-semibold">{title}</h2><p className="mt-4 text-lg leading-9 text-muted">{children}</p></section>; }

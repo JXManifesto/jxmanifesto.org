@@ -1,5 +1,6 @@
 export type Locale = "en" | "fa";
 export const locales: Locale[] = ["en", "fa"];
+export const isLocale = (locale: string): locale is Locale => locales.includes(locale as Locale);
 export const siteUrl = "https://JXManifesto.org";
 export const githubUrl = "https://github.com/JXManifesto/jxmanifesto.org";
 

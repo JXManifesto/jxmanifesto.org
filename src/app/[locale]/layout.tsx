@@ -3,8 +3,8 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { content, Locale, locales } from "@/content/site";
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+function isLocale(locale: string): locale is Locale {
+  return locales.includes(locale as Locale);
 }
 
 export default async function LocaleLayout({
@@ -12,10 +12,14 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!locales.includes(locale)) notFound();
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   return (
     <div lang={locale} dir={content[locale].dir} className="min-h-screen">
       <Header locale={locale} />

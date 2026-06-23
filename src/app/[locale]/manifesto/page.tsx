@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { CTASection } from "@/components/CTASection";
 import { ManifestoSection } from "@/components/ManifestoSection";
 import { content, Locale } from "@/content/site";
+import { generateLocaleStaticParams } from "@/lib/static-params";
+
+export const generateStaticParams = generateLocaleStaticParams;
 export async function generateMetadata({
   params,
 }: {

@@ -1,4 +1,7 @@
 import { content, Locale } from "@/content/site";
+import { generateLocaleStaticParams } from "@/lib/static-params";
+
+export const generateStaticParams = generateLocaleStaticParams;
 export default async function License({
   params,
 }: {

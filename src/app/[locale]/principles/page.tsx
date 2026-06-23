@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { PrincipleCard } from "@/components/PrincipleCard";
 import { content, Locale, principles } from "@/content/site";
+import { generateLocaleStaticParams } from "@/lib/static-params";
+
+export const generateStaticParams = generateLocaleStaticParams;
 export async function generateMetadata({
   params,
 }: {

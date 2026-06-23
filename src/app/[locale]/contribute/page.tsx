@@ -1,3 +1,25 @@
-import { notFound } from "next/navigation";
-import { content, githubUrl, isLocale } from "@/content/site";
-export default async function Contribute({ params }: { params: Promise<{ locale: string }> }) { const { locale } = await params; if (!isLocale(locale)) notFound(); const p = content[locale].contribute; return <section className="max-w-3xl py-16"><h1 className="text-5xl font-semibold">{p.title}</h1>{p.body.map((text) => <p key={text} className="mt-6 text-lg leading-9 text-muted">{text}</p>)}<a className="mt-8 inline-block rounded-full bg-ink px-6 py-3 font-semibold text-paper" href={githubUrl}>{p.cta}</a></section>; }
+import { content, githubUrl, Locale } from "@/content/site";
+export default async function Contribute({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const p = content[locale].contribute;
+  return (
+    <section className="max-w-3xl py-16">
+      <h1 className="text-5xl font-semibold">{p.title}</h1>
+      {p.body.map((text) => (
+        <p key={text} className="mt-6 text-lg leading-9 text-muted">
+          {text}
+        </p>
+      ))}
+      <a
+        className="mt-8 inline-block rounded-full bg-ink px-6 py-3 font-semibold text-paper"
+        href={githubUrl}
+      >
+        {p.cta}
+      </a>
+    </section>
+  );
+}

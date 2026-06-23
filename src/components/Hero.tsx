@@ -1,3 +1,30 @@
 import Link from "next/link";
 import { content, githubUrl, Locale } from "@/content/site";
-export function Hero({ locale }: { locale: Locale }) { const h = content[locale].home; return <section className="py-20 md:py-28"><p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{h.eyebrow}</p><h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-tight md:text-7xl">{h.title}</h1><p className="mt-6 max-w-2xl text-xl leading-9 text-muted">{h.intro}</p><div className="mt-10 flex flex-wrap gap-3"><Link className="rounded-full bg-ink px-6 py-3 font-semibold text-paper" href={`/${locale}/manifesto/`}>{h.primary}</Link><a className="rounded-full border border-ink px-6 py-3 font-semibold" href={githubUrl}>{h.secondary}</a></div></section>; }
+export function Hero({ locale }: { locale: Locale }) {
+  const h = content[locale].home;
+  return (
+    <section className="py-20 md:py-28">
+      <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">
+        {h.eyebrow}
+      </p>
+      <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-tight md:text-7xl">
+        {h.title}
+      </h1>
+      <p className="mt-6 max-w-2xl text-xl leading-9 text-muted">{h.intro}</p>
+      <div className="mt-10 flex flex-wrap gap-3">
+        <Link
+          className="rounded-full bg-ink px-6 py-3 font-semibold text-paper"
+          href={`/${locale}/manifesto/`}
+        >
+          {h.primary}
+        </Link>
+        <a
+          className="rounded-full border border-ink px-6 py-3 font-semibold"
+          href={githubUrl}
+        >
+          {h.secondary}
+        </a>
+      </div>
+    </section>
+  );
+}

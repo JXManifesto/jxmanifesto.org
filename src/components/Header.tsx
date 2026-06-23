@@ -1,4 +1,26 @@
 import Link from "next/link";
 import { content, Locale } from "@/content/site";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-export function Header({ locale }: { locale: Locale }) { const c = content[locale]; return <header className="border-b border-line/80"><div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5"><Link href={`/${locale}/`} className="text-xl font-bold tracking-tight">JX Manifesto</Link><nav aria-label="Main navigation" className="flex flex-wrap items-center gap-4 text-sm text-muted"><Link href={`/${locale}/manifesto/`}>{c.nav.manifesto}</Link><Link href={`/${locale}/principles/`}>{c.nav.principles}</Link><Link href={`/${locale}/about/`}>{c.nav.about}</Link><Link href={`/${locale}/contribute/`}>{c.nav.contribute}</Link><Link href={`/${locale}/license/`}>{c.nav.license}</Link></nav><LanguageSwitcher locale={locale} /></div></header>; }
+export function Header({ locale }: { locale: Locale }) {
+  const c = content[locale];
+  return (
+    <header className="border-b border-line/80">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5">
+        <Link href={`/${locale}/`} className="text-xl font-bold tracking-tight">
+          JX Manifesto
+        </Link>
+        <nav
+          aria-label="Main navigation"
+          className="flex flex-wrap items-center gap-4 text-sm text-muted"
+        >
+          <Link href={`/${locale}/manifesto/`}>{c.nav.manifesto}</Link>
+          <Link href={`/${locale}/principles/`}>{c.nav.principles}</Link>
+          <Link href={`/${locale}/about/`}>{c.nav.about}</Link>
+          <Link href={`/${locale}/contribute/`}>{c.nav.contribute}</Link>
+          <Link href={`/${locale}/license/`}>{c.nav.license}</Link>
+        </nav>
+        <LanguageSwitcher locale={locale} />
+      </div>
+    </header>
+  );
+}

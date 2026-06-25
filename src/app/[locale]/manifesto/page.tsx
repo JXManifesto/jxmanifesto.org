@@ -26,7 +26,7 @@ export default async function Manifesto({
   return (
     <article className="py-16">
       <p className="text-sm font-bold uppercase tracking-[0.28em] text-accent">
-        Version 0.1
+        {m.version}
       </p>
       <h1 className="mt-4 text-5xl font-semibold md:text-7xl">{m.title}</h1>
       <p className="mt-5 max-w-3xl text-xl leading-9 text-muted">
@@ -38,11 +38,56 @@ export default async function Manifesto({
       <p className="mb-10 text-sm text-muted">
         Last updated: {content[locale].updated}
       </p>
-      {m.sections.map(([title, body], index) => (
-        <ManifestoSection key={title} number={index + 1} title={title}>
-          {body}
-        </ManifestoSection>
-      ))}
+
+      <section className="space-y-6 border-t border-line py-8 text-lg leading-9 text-muted">
+        {m.intro.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </section>
+
+      <section className="border-t border-line py-8">
+        <h2 className="text-4xl font-semibold">{m.principlesTitle}</h2>
+        <div className="mt-8">
+          {m.principles.map(([title, body], index) => (
+            <ManifestoSection key={title} number={index + 1} title={title}>
+              {body}
+            </ManifestoSection>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-line py-8">
+        <h2 className="text-4xl font-semibold">{m.valuesTitle}</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {m.values.map(([value, connector, contrast]) => (
+            <div key={value} className="rounded-3xl border border-line p-6">
+              <p className="text-2xl font-semibold">{value}</p>
+              <p className="my-3 text-sm font-bold uppercase tracking-[0.2em] text-accent">
+                {connector}
+              </p>
+              <p className="text-lg text-muted">{contrast}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6 border-t border-line py-8 text-lg leading-9 text-muted">
+        <h2 className="text-4xl font-semibold text-foreground">
+          {m.invitationTitle}
+        </h2>
+        {m.invitation.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </section>
+
+      <section className="rounded-3xl border border-accent/40 bg-accent/5 p-8 text-center">
+        {m.closing.map((line) => (
+          <p key={line} className="text-2xl font-semibold leading-10">
+            {line}
+          </p>
+        ))}
+      </section>
+
       <p className="mt-8 rounded-2xl border border-line p-5 text-muted">
         {m.license}
       </p>
